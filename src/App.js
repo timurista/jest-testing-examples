@@ -5,15 +5,9 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-          hello
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div data-test="component-app" className="App">
+        <h1 data-test="counter-display">The counter is currently ?</h1>
+        <button data-test="increment-button">Increment Counter</button>
       </div>
     );
   }
