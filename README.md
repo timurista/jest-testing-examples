@@ -18,3 +18,28 @@ Acceptance / End to Ends
 
 jest works more on unit and integration tests
 
+## Primary Goal of testing
+Behavior of app, NOT the implementation
+Any code refactors shouldn't require rewrite of tests.
+Tests should be TIME SAVERS, test behavior.
+
+Example
+  - keeps sample of times button is clicked
+  - simulate and check to see if a function is called
+
+But... this is a brittle test. Subject to much change on refactor
+
+now if we change function name, this test will fail even if behavior remains the same.
+
+update to state is the behavior
+want to minimize state as it is an implementation
+  - could just check to see if counter is updated
+
+## No snapshots?
+Too brittle, they break all the time. Extremely easy to ignore the failures. You should investigate changes, but because tests fail so frequently, its too easy to update without checking. Also, no INTENT for your tests.
+Hard to tell if snapshot test meets a requirement
+Use alongside traditional testing but try to avoid.
+
+## CLick counter example
+
+
