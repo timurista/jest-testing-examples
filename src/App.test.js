@@ -20,24 +20,26 @@ const findByTestAttr = (wrapper, val) => {
 }
 
 it('renders without an error', () => {
-  const wrapper = shallow(<App />);
+  const wrapper = setup();
   expect(findByTestAttr(wrapper, "component-app")).toHaveLength(1);
 });
 
 // test button
 it('renders increment button', () => {
-  const wrapper = shallow(<App />);
+  const wrapper = setup();
   expect(findByTestAttr(wrapper, "increment-button")).toHaveLength(1);
 })
 
 it('renders counter display', () => {
-  const wrapper = shallow(<App />);
+  const wrapper = setup();
   expect(findByTestAttr(wrapper, "counter-display")).toHaveLength(1);
 
 })
 
 it('counter starts at 0', () => {
-
+  const wrapper = setup();
+  const initialCounterState = wrapper.state('counter');
+  expect(initialCounterState).toBe(0)
 })
 
 it('clicking button increments counter display', () => {
