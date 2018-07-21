@@ -1,12 +1,9 @@
 // @flow
 
 import React from 'react'
-import Enzyme, { shallow } from 'enzyme'
-import EnzymeAdapter from 'enzyme-adapter-react-16'
+import { shallow } from 'enzyme'
 import Congrats from './'
 import { findByTestAttr } from '../../test/test-utils'
-
-Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 const defaultProps = { success: false };
 
