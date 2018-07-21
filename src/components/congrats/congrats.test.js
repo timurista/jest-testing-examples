@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import EnzymeAdapter from 'enzyme-adapter-react-16'
@@ -6,9 +8,12 @@ import { findByTestAttr } from '../../test/test-utils'
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
+const defaultProps = { success: false };
+
 describe('Congrats message', () => {
   const setup = (props={}) => {
-    return shallow(<Congrats {...props} />)
+    const setupProps = {...defaultProps, ...props};
+    return shallow(<Congrats {...setupProps}/>)
   }
 
   it('renders without error', () => {
@@ -18,7 +23,7 @@ describe('Congrats message', () => {
   })
 
   it('renders no text when `success` is false', () => {
-    const wrapper = setup({ success: false })
+    const wrapper = setup()
     const component = findByTestAttr(wrapper, 'component-congrats')
     expect(component.text()).toBe('')
   })

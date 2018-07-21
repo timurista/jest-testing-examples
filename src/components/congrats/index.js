@@ -1,6 +1,10 @@
+// @flow
 import React from 'react'
 
-export default (props) => {
+export type Props = {
+  success: boolean
+}
+export default (props: Props) => {
   const { success } = props;
   if (success) {
     return (
