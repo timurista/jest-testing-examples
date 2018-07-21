@@ -10,10 +10,23 @@ describe('Congrats message', () => {
   const setup = (props={}) => {
     return shallow(<Congrats {...props} />)
   }
-  it('renders without error', () => {})
 
-  it('renders no text when `success` is false', () => {})
+  it('renders without error', () => {
+    const wrapper = setup();
+    const component = findByTestAttr(wrapper, 'component-congrats')
+    expect(component).toHaveLength(1);
+  })
 
-  it('renders non-empty success message', () => {})
+  it('renders no text when `success` is false', () => {
+    const wrapper = setup({ success: false })
+    const component = findByTestAttr(wrapper, 'component-congrats')
+    expect(component.text()).toBe('')
+  })
+
+  it('renders non-empty success message', () => {
+    const wrapper = setup({ success: true })
+    const message = findByTestAttr(wrapper, 'congrats-message')
+    expect(message.text()).not.toHaveLength(0)
+  })
 
 })
