@@ -43,3 +43,28 @@ Use alongside traditional testing but try to avoid.
 ## CLick counter example
 
 
+## Joto example
+
+GUessed Words
+table
+
+Finally we have correct guess state
+
+Congrats! You have guessed it
+
+App with title, children components
+
+INput
+
+Guessed Words
+
+Congrats message
+
+wireframe
+
+display instructions
+
+output put both with title
+
+grab random word server when app mounts, and will not change
+
