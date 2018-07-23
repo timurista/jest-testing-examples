@@ -10,7 +10,6 @@ const defaultProps = {
 
 const setup = (props={}) => {
   const setupProps = {...defaultProps, ...props};
-  console.log('setupProps')
   return shallow(<GuessedWords {...setupProps}/>)
 }
 
@@ -30,8 +29,8 @@ describe('GuessedWords', () => {
       expect(component).toHaveLength(1)
     })
     it('renders instructions to a guessed word', () => {
-      const instructions = findByTestAttr(wrapper, 'component-guessed-instructions')
-      expect(instructions.text()).not.toHaveLength(0)
+      const instructions = findByTestAttr(wrapper, 'guess-instructions')
+      expect(instructions.text()).toBe('Try to guess the secret word!')
     })
 
   })

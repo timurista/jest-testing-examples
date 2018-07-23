@@ -11,9 +11,19 @@ export type Props = {
 };
 
 const GuessedWords = (props: Props ) => {
-  const { guessedWords: [] } = props;
+  const { guessedWords = [] } = props;
+  let contents;
+  if (!guessedWords.length) {
+    contents = (
+      <span data-test-id="guess-instructions">
+        Try to guess the secret word!
+      </span>
+    )
+  }
   return  (
-    <div />
+    <div data-test-id="component-guessed-words">
+    {contents}
+    </div>
   )
 }
 
