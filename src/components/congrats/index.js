@@ -8,7 +8,7 @@ export default (props: Props) => {
   const { success } = props;
   if (success) {
     return (
-      <div data-test-id="component-congrats">
+      <div data-test-id="component-congrats" className="alert alert-success">
         <span data-test-id="congrats-message">
           Congratulations! You guessed the word!
         </span>
