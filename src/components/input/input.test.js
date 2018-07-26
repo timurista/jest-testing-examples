@@ -1,8 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { findByTesId } from '../../test/test-utils'
+import { findByTesId, storeFactory } from '../../test/test-utils'
 import Input from './'
+
+const setup = (initialState={}) => {
+  const store = storeFactory(initialState)
+  const wrapper = shallow(<Input store={store}/>);
+  console.log(wrapper.debug())
+}
+
+setup()
 
 describe('Input', () => {
   describe('render', () => {
