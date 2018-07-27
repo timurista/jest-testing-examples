@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { findByTesId, storeFactory } from '../../test/test-utils'
+import { findByTestAttr, storeFactory } from '../../test/test-utils'
 import Input from './'
 
 const setup = (initialState={}) => {
@@ -15,14 +15,22 @@ setup()
 describe('Input', () => {
   describe('render', () => {
     describe('word has not been guesed', () => {
+      let wrapper;
+      beforeEach(() => {
+        const initialState = { success: false };
+        wrapper = setup(initialState);
+      })
       it('renders without error', () => {
-
+        const component = findByTestAttr(wrapper, 'component-input')        
+        expect(component).toHaveLength(1)
       })
       it('renders input box', () => {
-        
+        const inputBox = findByTestAttr(wrapper, 'input-box')
+        expect(inputBox).toHaveLength(1)        
       })
       it('renders submit button', () => {
-        
+        const submitButton = findByTestAttr(wrapper, 'submit-button')
+        expect(submitButton).toHaveLength(1)           
       })
     })
     describe('word has been guesed', () => {
