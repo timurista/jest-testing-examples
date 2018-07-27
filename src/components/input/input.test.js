@@ -34,14 +34,22 @@ describe('Input', () => {
       })
     })
     describe('word has been guesed', () => {
+      let wrapper;
+      beforeEach(() => {
+        const initialState = { success: true }
+        wrapper = setup(initialState)
+      })
       it('renders without error', () => {
-
+        const component = findByTestAttr(wrapper, 'component-input')        
+        expect(component).toHaveLength(1)
       })
       it('does not render input box', () => {
-        
+        const inputBox = findByTestAttr(wrapper, 'input-box')
+        expect(inputBox).toHaveLength(0)          
       })
       it('does not render submit button', () => {
-        
+        const submitButton = findByTestAttr(wrapper, 'submit-button')
+        expect(submitButton).toHaveLength(0) 
       })      
     })
   })
