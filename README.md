@@ -68,3 +68,12 @@ output put both with title
 
 grab random word server when app mounts, and will not change
 
+## Redux Thunk
+
+More flexibility for action creators
+
+Return function instead of action
+  - Thunk = function that returns a function
+  - can dispatch multiple actions
+  - can access current state
+
