@@ -1,10 +1,13 @@
 // @flow
 import type {ShallowWrapper} from 'enzyme'
-import { createStore } from 'redux'
-import rootReducer from '../../src/reducers';
+import { createStore, applyMiddleware } from 'redux'
 
-export const storeFactory = (initialState) => {
-  return createStore(rootReducer, initialState)
+import rootReducer from '../../src/reducers';
+import { middlewares } from '../configure-store'
+
+export const storeFactory = (initialState: any) => {
+  const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore)
+  return createStoreWithMiddleware(rootReducer, initialState)
 }
 
 export const findByTestAttr = (wrapper: ShallowWrapper, val: string): ShallowWrapper => {
