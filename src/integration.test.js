@@ -54,17 +54,18 @@ describe('guessWord action dispatcher', () => {
         secretWord,
         success: false,
         guessedWords: [...guessedWords, { 
-          guessWord: unsuccessfulGuess, 
+          guessedWord: unsuccessfulGuess, 
           letterMatchCount: 3
         }]
       }
-      expect(newState).toBe(expectedState);        
+      expect(newState).toEqual(expectedState);        
     })
 
     it('updates state for successful guess', () => {
       store.dispatch(guessWord(secretWord))
       const newState = store.getState()
       const expectedState = {
+        secretWord,
         success: true,
         guessedWords: [...guessedWords, {
           guessedWord: secretWord,
