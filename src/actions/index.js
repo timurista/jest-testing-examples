@@ -35,7 +35,3 @@ export const getSecretWord = () => {
       });
   }
 }
-
-// export function correctGuess() {
-//   return { type: actionTypes.CORRECT_GUESS };
-// }
