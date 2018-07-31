@@ -4,13 +4,11 @@ describe('getSecretWord action creator', () => {
     moxios.install();
   })
 
-
-
   afterEach(() => {
     moxios.uninstall();
   });
 
   it('adds response word to state', () => {
-    
+
   })
 })
