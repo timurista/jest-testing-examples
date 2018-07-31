@@ -54,7 +54,16 @@ describe('Input', () => {
     })
   })
 
-  describe('update state', () => {
-    
+  describe('redux props', () => {
+    it('has success piece of state as prop', () => {
+      const success = true;
+      const wrapper = setup({ success });
+      expect(wrapper.instance().props.success).toBe(success)
+    })
+
+    it('guessword action creator is a function prop', () => {
+      const wrapper = setup();
+      expect(wrapper.instance().props.guessWord).toBeInstanceOf(Function)
+    })
   })
 })
