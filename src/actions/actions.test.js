@@ -1,4 +1,7 @@
 import moxios from 'moxios';
+import { storeFactory } from '../test/test-utils'
+import { getSecretWord } from './';
+
 describe('getSecretWord action creator', () => {
   beforeEach(() => {
     moxios.install();
@@ -9,6 +12,21 @@ describe('getSecretWord action creator', () => {
   });
 
   it('adds response word to state', () => {
+    const secretWord = 'party';
+    const store = storeFactory();
 
+    moxios.wait(() => {
+      const request = moxios.request.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: secretWord,
+      })
+    })
+
+    return store.dispatch(getSecretWord())
+      .then(() => {
+        const newState = store.getState();
+        expect(newState.secretWord).toBe(secretWord)
+      })
   })
 })
