@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { findByTestAttr, storeFactory } from '../../test/test-utils'
-import Input from './'
+import Input, { UnconnectedInput } from './'
 
 const setup = (initialState={}) => {
   const store = storeFactory(initialState)
@@ -64,6 +64,24 @@ describe('Input', () => {
     it('guessword action creator is a function prop', () => {
       const wrapper = setup();
       expect(wrapper.instance().props.guessWord).toBeInstanceOf(Function)
+    })
+  })
+
+  describe('guess word action creator', () => {
+    it('clicking submit button calls guessWord', () => {
+      const guessWordMock = jest.fn();
+      const wrapper = shallow(<UnconnectedInput guessWord={guessWordMock} />)
+      const submit = findByTestAttr(wrapper, 'submit-button');
+      submit.simulate('click');
+      expect(guessWordMock).toHaveBeenCalled();
+    })
+
+    it('clicking submit button calls guessWord with correct params', () => {
+      const guessWordMock = jest.fn();
+      const wrapper = shallow(<UnconnectedInput guessWord={guessWordMock} />)
+      const submit = findByTestAttr(wrapper, 'submit-button');
+      submit.simulate('click');
+      expect(guessWordMock).toHaveBeenCalled();
     })
   })
 })
