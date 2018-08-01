@@ -77,3 +77,23 @@ Return function instead of action
   - can dispatch multiple actions
   - can access current state
 
+## Challenges
+
+1. track number of guesses
+"Total Guessed: #" made
+add column to guessed words table
+
+2. Button to reset the game
+button new component, similar to input
+
+3. Give up button
+  - app shows secret word button
+  - New Word button component to reset
+
+4. User Input secret word
+
+5. random word server error
+
+6. use wordnik to get secret word
+words/randomWords endpoint
+

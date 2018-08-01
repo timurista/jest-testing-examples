@@ -33,8 +33,7 @@ export class UnconnectedInput extends Component<Props> {
           type="text" 
           placeholder="enter guess" />
         <button 
-          data-test-id="submit-button" 
-          type="submit" 
+          data-test-id="submit-button"  
           className="btn btn-primary mb-2" 
           onClick={this.submitGuessedWord}
           type="submit">

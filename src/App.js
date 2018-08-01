@@ -5,12 +5,13 @@ import './App.css';
 import GuesedWords from './components/guessed-words'
 import Congrats from './components/congrats'
 import Input from './components/input'
-import { getSecretWord, guessWord } from './actions'
+import { getSecretWord } from './actions'
 
 export type Props = {
   getSecretWord: any => any,
   success: boolean,
   guessedWords: any[],
+  secretWord: string,
 }
 export class UnconnectedApp extends Component<Props> {
   componentDidMount() {
@@ -22,6 +23,7 @@ export class UnconnectedApp extends Component<Props> {
     return (
       <div data-test="component-app" className="container">
         <h1>Jotto</h1>
+        <div>The secret word is {this.props.secretWord}</div>
         <Congrats success={success} />
         <Input />
         <GuesedWords guessedWords={guessedWords} />
