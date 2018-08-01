@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './App.css';
@@ -6,7 +7,16 @@ import Congrats from './components/congrats'
 import Input from './components/input'
 import { getSecretWord } from './actions'
 
-class App extends Component {
+export type Props = {
+  getSecretWord: any => any,
+  success: boolean,
+  guessedWords: any[],
+}
+export class UnconnectedApp extends Component<Props> {
+  componentDidMount() {
+    this.props.getSecretWord();
+  }
+
   render() {
     const { success, guessedWords } = this.props;
     return (
@@ -24,4 +34,4 @@ const mapStateToProps = (state) => {
   const { success, guessedWords, secretWord } = state;
   return { success, guessedWords, secretWord }
 }
-export default connect(mapStateToProps, { getSecretWord })(App);
+export default connect(mapStateToProps, { getSecretWord })(UnconnectedApp);
