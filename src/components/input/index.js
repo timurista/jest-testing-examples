@@ -6,13 +6,21 @@ import { guessWord } from '../../actions';
 
 export type Props = {
   success: boolean,
+  guessWord: any => any,
 }
-class Input extends Component<Props> {
+export class UnconnectedInput extends Component<Props> {
   render() {
     const contents = this.props.success ? null : (
       <form className="form-inline" >
         <input data-test-id="input-box" className="mb-2 mx-sm-3" id="word-guess" type="text" placeholder="enter guess" />
-        <button data-test-id="submit-button" type="submit" className="btn btn-primary mb-2" type="submit">Submit</button>
+        <button 
+          data-test-id="submit-button" 
+          type="submit" 
+          className="btn btn-primary mb-2" 
+          onClick={() => this.props.guessWord()}
+          type="submit">
+          Submit
+        </button>
       </form>
     );
     return (
@@ -27,4 +35,4 @@ const mapStateToProps = ({ success }) => {
   return { success }
 }
 
-export default connect(mapStateToProps, { guessWord })(Input)
+export default connect(mapStateToProps, { guessWord })(UnconnectedInput)

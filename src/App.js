@@ -5,7 +5,7 @@ import './App.css';
 import GuesedWords from './components/guessed-words'
 import Congrats from './components/congrats'
 import Input from './components/input'
-import { getSecretWord } from './actions'
+import { getSecretWord, guessWord } from './actions'
 
 export type Props = {
   getSecretWord: any => any,
