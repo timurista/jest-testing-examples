@@ -68,20 +68,25 @@ describe('Input', () => {
   })
 
   describe('guess word action creator', () => {
-    it('clicking submit button calls guessWord', () => {
-      const guessWordMock = jest.fn();
-      const wrapper = shallow(<UnconnectedInput guessWord={guessWordMock} />)
+    let wrapper;
+    let guessWordMock;
+    let guessedWord;
+    beforeEach(() => {
+      guessWordMock = jest.fn();
+      wrapper = shallow(<UnconnectedInput guessWord={guessWordMock} />)
+      guessedWord = 'train';
+      wrapper.instance().inputBox.current = { value: guessedWord }
+      console.log('INPUT BOX', wrapper.instance().inputBox)
+
       const submit = findByTestAttr(wrapper, 'submit-button');
-      submit.simulate('click');
+      submit.simulate('click', { preventDefault() {} });
+    })
+    it('clicking submit button calls guessWord', () => {      
       expect(guessWordMock).toHaveBeenCalled();
     })
 
     it('clicking submit button calls guessWord with correct params', () => {
-      const guessWordMock = jest.fn();
-      const wrapper = shallow(<UnconnectedInput guessWord={guessWordMock} />)
-      const submit = findByTestAttr(wrapper, 'submit-button');
-      submit.simulate('click');
-      expect(guessWordMock).toHaveBeenCalled();
+      expect(guessWordMock).toHaveBeenCalledWith(guessedWord);
     })
   })
 })
