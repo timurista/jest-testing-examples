@@ -76,7 +76,6 @@ describe('Input', () => {
       wrapper = shallow(<UnconnectedInput guessWord={guessWordMock} />)
       guessedWord = 'train';
       wrapper.instance().inputBox.current = { value: guessedWord }
-      console.log('INPUT BOX', wrapper.instance().inputBox)
 
       const submit = findByTestAttr(wrapper, 'submit-button');
       submit.simulate('click', { preventDefault() {} });
@@ -87,6 +86,10 @@ describe('Input', () => {
 
     it('clicking submit button calls guessWord with correct params', () => {
       expect(guessWordMock).toHaveBeenCalledWith(guessedWord);
+    })
+
+    it('after submit click input box clears', () => {
+      expect(wrapper.instance().inputBox.current.value).toBe('');
     })
   })
 })
