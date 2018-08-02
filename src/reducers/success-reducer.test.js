@@ -7,6 +7,6 @@ test('returns default false when no action is passed', () => {
 })
 
 test('returns true when type correct guess is passed', () => {
-  const newState = success(undefined, { type: actionTypes.CORRECT_GUESS });
+  const newState = success(undefined, { type: actionTypes.SET_SUCCESS, payload: true });
   expect(newState).toBe(true)
 })
