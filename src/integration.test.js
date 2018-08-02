@@ -1,3 +1,4 @@
+import moxios from 'moxios';
 import { storeFactory } from './test/test-utils';
 import { guessWord, reset } from './actions';
 
@@ -36,16 +37,37 @@ describe('guessWord action dispatcher', () => {
       expect(newState).toEqual(expectedState)
     })
 
-    it('calling reset resets the game', () => {
-      store.dispatch(guessWord(secretWord));
-      store.dispatch(reset());
-      const newState = store.getState();
-      expect(newState).toEqual({
-        success: false,
-        guessedWords: [],
-        secretWord: "party"
+    describe('reseting the game', () => {
+      beforeEach(() => {
+        moxios.install();
+      })
+    
+      afterEach(() => {
+        moxios.uninstall();
       });
+    
+      it('calling reset resets the game', async () => {
+        store.dispatch(guessWord(secretWord));
+
+
+        moxios.wait(() => {
+          const request = moxios.requests.mostRecent();
+          request.respondWith({
+            status: 200,
+            response: 'lemon',
+          })
+        })
+        await store.dispatch(reset());
+
+        const newState = store.getState();
+        expect(newState).toEqual({
+          success: false,
+          guessedWords: [],
+          secretWord: "lemon"
+        });
+      })
     })
+
   })
 
   describe('some guessed words here', () => {
