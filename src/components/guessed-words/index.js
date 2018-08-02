@@ -38,7 +38,7 @@ const GuessedWords = (props: Props ) => {
             { guessedWordsRows }
           </tbody>
         </table>
-        <h2>Total Guesses 
+        <h2>Total Guesses: {' '} 
           <span data-test-id="total-guessed">{guessedWords.length}</span>
         </h2>
       </div>

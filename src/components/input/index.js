@@ -23,12 +23,12 @@ export class UnconnectedInput extends Component<Props> {
   }
 
   render() {
-    const contents = this.props.success ? null : (
+    const contents = this.props.success || this.props.gameOver ? null : (
       <form className="form-inline" >
         <input 
           data-test-id="input-box"
           ref={this.inputBox} 
-          className="mb-2 mx-sm-3" 
+          className="form-control mb-2 mx-sm-3" 
           id="word-guess" 
           type="text" 
           placeholder="enter guess" />
@@ -49,8 +49,8 @@ export class UnconnectedInput extends Component<Props> {
   }
 }
 
-const mapStateToProps = ({ success }) => {
-  return { success }
+const mapStateToProps = ({ success, gameOver }) => {
+  return { success, gameOver }
 }
 
 export default connect(mapStateToProps, { guessWord })(UnconnectedInput)

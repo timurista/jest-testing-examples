@@ -4,7 +4,7 @@ import { reset } from '../../actions'
 
 export class UnconnectedNewWord extends Component {
   render() {
-    return this.props.success && (
+    return this.props.gameOver && (
       <button
         data-test-id="new-word-button"  
         className="btn btn-secondary mb-2" 
@@ -15,8 +15,8 @@ export class UnconnectedNewWord extends Component {
   }
 }
 
-const mapStateToProps = ({ success }) => {
-  return { success }
+const mapStateToProps = ({ gameOver }) => {
+  return { gameOver }
 }
 
 export default connect(mapStateToProps, { reset })(UnconnectedNewWord)
