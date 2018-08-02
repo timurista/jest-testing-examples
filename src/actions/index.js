@@ -12,7 +12,7 @@ export const reset = () => {
   return function(dispatch, getState) {
     dispatch({ type: actionTypes.SET_SUCCESS, payload: false })
     dispatch({ type: actionTypes.RESET_GUESSED_WORDS })
-    getSecretWord();
+    return getWordFromServer(dispatch);
   }
 }
 
@@ -33,14 +33,18 @@ export const guessWord = (guessedWord) => {
   };
 };
 
+const getWordFromServer = (dispatch) => {
+  return axios.get('http://localhost:3030')
+  .then(response => {
+    dispatch({
+      type: actionTypes.SET_SECRET_WORD,
+      payload: response.data
+    })
+  });
+}
+
 export const getSecretWord = () => {
   return (dispatch) => {
-    return axios.get('http://localhost:3030')
-      .then(response => {
-        dispatch({
-          type: actionTypes.SET_SECRET_WORD,
-          payload: response.data
-        })
-      });
+    return getWordFromServer(dispatch)
   }
 }
