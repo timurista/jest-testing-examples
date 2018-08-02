@@ -6,18 +6,18 @@ import { UnconnectedNewWord } from './'
 
 const setup = (props={}) => {
   const defaultProps = {
-    success: true
+    gameOver: true
   };
   return shallow(<UnconnectedNewWord { ...{...defaultProps, ...props }} />)
 }
 
-it('render button with new word when success is true', () => {
+it('render button with new word when gameOver is true', () => {
   const wrapper = setup();
   expect(findByTestAttr(wrapper, 'new-word-button')).toHaveLength(1);
 })
 
-it('does not render button with new word when no success', () => {
-  const wrapper = setup({ success: false });
+it('does not render button with new word when no gameOver', () => {
+  const wrapper = setup({ gameOver: false });
   expect(findByTestAttr(wrapper, 'new-word-button')).toHaveLength(0);
 })
 
