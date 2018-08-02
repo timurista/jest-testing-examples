@@ -2,9 +2,18 @@ import axios from 'axios';
 import { getLetterMatchCount } from '../helpers'
 
 export const actionTypes = {
-  CORRECT_GUESS: 'CORRECT_GUESS',
+  SET_SUCCESS: 'SET_SUCCESS',
   GUESS_WORD: 'GUESS_WORD',
-  SET_SECRET_WORD: 'SET_SECRET_WORD'
+  SET_SECRET_WORD: 'SET_SECRET_WORD',
+  RESET_GUESSED_WORDS: 'RESET_GUESSED_WORDS'
+}
+
+export const reset = () => {
+  return function(dispatch, getState) {
+    dispatch({ type: actionTypes.SET_SUCCESS, payload: false })
+    dispatch({ type: actionTypes.RESET_GUESSED_WORDS })
+    getSecretWord();
+  }
 }
 
 export const guessWord = (guessedWord) => {
@@ -19,7 +28,7 @@ export const guessWord = (guessedWord) => {
 
 
     if(guessedWord === secretWord) {
-      dispatch({ type: actionTypes.CORRECT_GUESS })
+      dispatch({ type: actionTypes.SET_SUCCESS, payload: true })
     }
   };
 };
