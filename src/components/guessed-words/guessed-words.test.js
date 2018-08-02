@@ -57,6 +57,15 @@ describe('GuessedWords', () => {
       const guessedWordsNodes = findByTestAttr(wrapper, 'guessed-word');
       expect(guessedWordsNodes).toHaveLength(guessedWords.length)
     })
+    it('renders correct number beside each guess', () => {
+      const guessedWordsNodes = findByTestAttr(wrapper, 'guessed-word');
+      const guessedNumbers = findByTestAttr(guessedWordsNodes, 'guess-number')
+      expect(guessedNumbers.first().text()).toBe("1")
+    })
+    it('renders total number of guesses so far', () => {
+      const guessWordTotal = findByTestAttr(wrapper, 'total-guessed');
+      expect(guessWordTotal.text()).toBe(`${guessedWords.length}`)
+    })
 
   })
 })
