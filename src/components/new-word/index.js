@@ -6,7 +6,7 @@ export class UnconnectedNewWord extends Component {
   render() {
     return this.props.success && (
       <button
-        data-test-id="submit-button"  
+        data-test-id="new-word-button"  
         className="btn btn-secondary mb-2" 
         onClick={this.props.reset}>
         New Word
